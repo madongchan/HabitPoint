@@ -20,7 +20,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass;
     private Button btn_login, btn_register;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -62,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String userAge = jsonObject.getString( "userAge" );
 
                                 Toast.makeText( getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT ).show();
-                                Intent intent = new Intent( LoginActivity.this, MainActivity.class );
+                                Intent intent = new Intent( getApplicationContext(), MainActivity.class );
 
                                 intent.putExtra( "userID", userID );
                                 intent.putExtra( "userPass", userPass );
