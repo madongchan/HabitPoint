@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         final String userPass = intent.getStringExtra("userPass");
         final String userName = intent.getStringExtra("userName");
         final String userAge = intent.getStringExtra("userAge");
-        myApp.setGlobalString(userName);
-        tv_name.setText("마동찬");
+        myApp.setUser_name(userName);
+        tv_name.setText(myApp.getUser_name());
 
         person.setOnClickListener(new View.OnClickListener() {
             @Override

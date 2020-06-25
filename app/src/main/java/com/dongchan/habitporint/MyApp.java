@@ -10,9 +10,9 @@ public class MyApp extends Application {
     public void onCreate() {
         //전역 변수 초기화
         state = 0;
-        String name;
         super.onCreate();
     }
+    public String user_name;
 
     @Override
     public void onTerminate() {
@@ -27,16 +27,18 @@ public class MyApp extends Application {
         return state;
     }
 
-    private String mGlobalString;
+    public void setUser_name(String user_name) {
 
-    public String getGlobalString()
-    {
-        return mGlobalString;
+        this.user_name = user_name;
+
     }
 
-    public void setGlobalString(String globalString)
-    {
-        this.mGlobalString = globalString;
+    public String getUser_name() {
+
+        return user_name;
+
     }
+
+
 
 }
