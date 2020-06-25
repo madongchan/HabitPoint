@@ -20,6 +20,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass;
     private Button btn_login, btn_register;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -52,29 +55,38 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject( response );
                             boolean success = jsonObject.getBoolean( "success" );
 
-                            if(success) {//로그인 성공시
+                            String getEditid = et_id.getText().toString();
+                            String getEditpass = et_pass.getText().toString();
+
+                            if (getEditid.getBytes().length <= 0 || getEditpass.getBytes().length <= 0){
+                                Toast.makeText( getApplicationContext(), "아이디 또는 비밀번호를 입력해주세요", Toast.LENGTH_SHORT ).show();
+                            }else
+                                {
+                                if(success) {//로그인 성공시
 
 
-                                String userID = jsonObject.getString( "userID" );
-                                String userPass = jsonObject.getString( "userPassword" );
-                                String userName = jsonObject.getString( "userName" );
-                                String userAge = jsonObject.getString( "userAge" );
+                                    String userID = jsonObject.getString( "userID" );
+                                    String userPass = jsonObject.getString( "userPassword" );
+                                    String userName = jsonObject.getString( "userName" );
+                                    String userAge = jsonObject.getString( "userAge" );
 
-                                Toast.makeText( getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT ).show();
-                                Intent intent = new Intent( getApplicationContext(), MainActivity.class );
+                                    Toast.makeText( getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT ).show();
+                                    Intent intent = new Intent( getApplicationContext(), MainActivity.class );
 
-                                intent.putExtra( "userID", userID );
-                                intent.putExtra( "userPass", userPass );
-                                intent.putExtra( "userName", userName );
-                                intent.putExtra( "userAge", userAge );
+                                    intent.putExtra( "userID", userID );
+                                    intent.putExtra( "userPass", userPass );
+                                    intent.putExtra( "userName", userName );
+                                    intent.putExtra( "userAge", userAge );
 
-                                startActivity( intent );
+                                    startActivity( intent );
 
 
-                            } else {//로그인 실패시
-                                Toast.makeText( getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT ).show();
-                                return;
+                                } else {//로그인 실패시
+                                    Toast.makeText( getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT ).show();
+                                    return;
+                                }
                             }
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();

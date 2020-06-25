@@ -1,17 +1,19 @@
 package com.dongchan.habitporint;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView tv_name,tv_count;
 
-    private TextView tv_name;
+
 
 
     @Override
@@ -19,38 +21,43 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView(R.layout.activity_main);
 
-
-
-        ImageView wheel = (ImageView) findViewById(R.id.setting_wheel);
-        ImageView habit = (ImageView) findViewById(R.id.habit_select);
-        ImageView shop = (ImageView) findViewById(R.id.shop);
-        ImageView box = (ImageView) findViewById(R.id.box);
-        ImageView direct_point = (ImageView) findViewById(R.id.direct_point);
+        ImageView person = (ImageView) findViewById(R.id.setting_person);
+        ImageView habit = (ImageView) findViewById(R.id.coca);
+        ImageView shop = (ImageView) findViewById(R.id.starbucks);
+        ImageView box = (ImageView) findViewById(R.id.moonsang);
+        ImageView direct_point = (ImageView) findViewById(R.id.cake);
 
         tv_name = findViewById(R.id.te_name);
+        tv_count = findViewById(R.id.te_count);
+
+        MyApp myApp = (MyApp)getApplicationContext();
+        int number = myApp.getState();
+        tv_count.setText(""+number);
 
         Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
-        String userPass = intent.getStringExtra("userPass");
-        String userName = intent.getStringExtra("userName");
-        String userAge = intent.getStringExtra("userAge");
+        final String userID = intent.getStringExtra("userID");
+        final String userPass = intent.getStringExtra("userPass");
+        final String userName = intent.getStringExtra("userName");
+        final String userAge = intent.getStringExtra("userAge");
+        myApp.setGlobalString(userName);
+        tv_name.setText("마동찬");
 
-
-
-        tv_name.setText(userName);
-
-        tv_name.setOnClickListener(new View.OnClickListener() {
+        person.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText( getApplicationContext(), "userName", Toast.LENGTH_LONG ).show();
-            }
-        });
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                alertDialogBuilder.setTitle("회원정보");
+                alertDialogBuilder.setMessage(" 아이디: "+userID+"\n"+" 비밀번호: "+userPass+"\n"+" 이름: "+userName+"\n"+" 나이: "+userAge);
+                alertDialogBuilder.setIcon(R.drawable.stetting);
+                alertDialogBuilder.setPositiveButton("확인",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-        wheel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent setting_page = new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(setting_page);
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 

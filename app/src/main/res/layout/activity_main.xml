@@ -11,12 +11,14 @@
         android:id="@+id/te_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:text="홍길동"
         android:textAllCaps="true"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -48,13 +50,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/te_id"
+        android:id="@+id/te_count"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="70dp"
-        android:text="5000"
+        android:text="0"
         android:textAllCaps="true"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -64,7 +66,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/setting_wheel"
+        android:id="@+id/setting_person"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -72,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/stetting" />
+        app:srcCompat="@drawable/person" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -95,14 +97,14 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/habit_select"
+                android:id="@+id/coca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/person" />
+                app:srcCompat="@drawable/walking" />
 
             <ImageView
-                android:id="@+id/shop"
+                android:id="@+id/starbucks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -121,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="습관선택"
+                android:text="만보기"
                 android:textAllCaps="true"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -144,14 +146,14 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/box"
+                android:id="@+id/moonsang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/box" />
 
             <ImageView
-                android:id="@+id/direct_point"
+                android:id="@+id/cake"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

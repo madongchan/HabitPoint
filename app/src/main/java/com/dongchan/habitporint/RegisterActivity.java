@@ -49,26 +49,37 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        try {
-                            JSONObject jsonObject = new JSONObject( response );
-                            boolean success = jsonObject.getBoolean( "success" );
+                        String getEditid = et_id.getText().toString();
+                        String getEditpass = et_pass.getText().toString();
+                        String getEditname = et_name.getText().toString();
+                        String getEditage = et_age.getText().toString();
 
-                            //회원가입 성공시
-                            if(success) {
+                        if (getEditid.getBytes().length <= 0 || getEditpass.getBytes().length <= 0 || getEditname.getBytes().length <= 0 || getEditage.getBytes().length <= 0){
 
-                                Toast.makeText( getApplicationContext(), "회원가입에 성공했습니다.", Toast.LENGTH_SHORT ).show();
-                                Intent intent = new Intent( RegisterActivity.this, LoginActivity.class );
-                                startActivity( intent );
+                        }else {
+                            try {
+                                JSONObject jsonObject = new JSONObject( response );
+                                boolean success = jsonObject.getBoolean( "success" );
 
-                                //회원가입 실패시
-                            } else {
-                                Toast.makeText( getApplicationContext(), "회원가입에 실패했습니다.", Toast.LENGTH_SHORT ).show();
-                                return;
+                                //회원가입 성공시
+                                if(success) {
+
+                                    Toast.makeText( getApplicationContext(), "회원가입에 성공했습니다.", Toast.LENGTH_SHORT ).show();
+                                    Intent intent = new Intent( RegisterActivity.this, LoginActivity.class );
+                                    startActivity( intent );
+
+                                    //회원가입 실패시
+                                } else {
+                                    Toast.makeText( getApplicationContext(), "회원가입에 실패했습니다.", Toast.LENGTH_SHORT ).show();
+                                    return;
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+
+
 
                     }
                 };
